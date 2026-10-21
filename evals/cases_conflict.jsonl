@@ -1,0 +1,6 @@
+{"id": "x001", "level": "hard", "source": "handmade", "question": "账号通过率是怎么算的？", "must_cite": true, "must_cite_all": ["18-数据看板口径.md", "14-SOP-数量红线.md"], "must_say_any": ["冲突", "不一致", "不同", "两", "需要确认"]}
+{"id": "x002", "level": "hard", "source": "handmade", "question": "看板上的「已通过 CONNECTED」统计的是哪个状态值？", "must_cite": true, "must_cite_all": ["18-数据看板口径.md", "13-SOP-优先级与状态.md"], "must_say_any": ["冲突", "不一致", "不同", "两个", "口径"]}
+{"id": "x003", "level": "hard", "source": "handmade", "question": "拿不准某个客户该不该免费时，状态应该保持成什么？这个状态在状态定义里有吗？", "must_cite": true, "must_cite_all": ["03-付费判定规则.md", "13-SOP-优先级与状态.md"], "must_say_any": ["不在", "没有", "未定义", "不一致", "冲突"]}
+{"id": "x004", "level": "hard", "source": "handmade", "question": "跟进台账的状态一共有哪几个？请把来源也说清楚。", "must_cite": true, "must_cite_all": ["02-跟进台账使用说明.md", "13-SOP-优先级与状态.md"], "must_say_any": ["不一致", "矛盾", "无法给出", "需要确认", "三处"]}
+{"id": "x005", "level": "hard", "source": "handmade", "question": "第一条触达消息里可以直接说帮对方免费注册吗？", "must_cite": true, "must_cite_all": ["15-SOP-英文话术.md", "03-付费判定规则.md"], "must_say_any": ["禁止", "不允许", "不要", "不建议"]}
+{"id": "x006", "level": "hard", "source": "handmade", "question": "来源字段应该填 ENGAGED / TARGET，还是点赞 / 赞助商 / 搜索？", "must_cite": true, "must_cite_all": ["02-跟进台账使用说明.md", "12-SOP-日常四步.md"], "must_say_any": ["不一致", "实际", "与规范", "口径", "两种"]}

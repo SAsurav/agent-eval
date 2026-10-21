@@ -82,6 +82,15 @@ def judge(case, res):
 
     if case.get("must_cite", True) and not cites:
         return False, "no_citation", "答案里没有可回指的引用"
+    must_all = case.get("must_cite_all")
+    if must_all:
+        got = {strip_index(c) for c in cites}
+        missing = [d for d in must_all if d not in got]
+        if missing:
+            return False, "missing_source", f"没同时引用冲突双方，缺 {missing}"
+    must_say = case.get("must_say_any")
+    if must_say and not any(w in answer for w in must_say):
+        return False, "no_conflict_flag", f"没指出文档间的不一致（应出现其中之一：{must_say[:3]}…）"
     expect = case.get("expect_doc")
     if expect:
         got = {strip_index(c) for c in cites}
