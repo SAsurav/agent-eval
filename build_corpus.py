@@ -16,12 +16,16 @@ from docx import Document
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "corpus")
 
-# ===== 按你的环境改这三行（本脚本只用于「从原始文件重新生成语料」，
-#       仓库里已经有生成好的 corpus/，平时不需要跑）=====
-WORKFLOW = r"<path>\WORKFLOW.md"
-XLSX = r"<path>\跟进表.xlsx"
-DOCX = r"<path>\作品集.docx"
-# =====================================================
+# ===== 原始文件位置：用环境变量指定，仓库里不放真实路径 =====
+# 本脚本只用于「从原始文件重新生成语料」。仓库已带生成好的 corpus/，平时不需要跑。
+# 需要重跑时：
+#   set WORKFLOW_MD=<...>\WORKFLOW.md
+#   set LEDGER_XLSX=<...>\跟进表.xlsx
+#   set CASE_DOCX=<...>\作品集.docx
+WORKFLOW = os.environ.get("WORKFLOW_MD", r"<path>\WORKFLOW.md")
+XLSX = os.environ.get("LEDGER_XLSX", r"<path>\跟进表.xlsx")
+DOCX = os.environ.get("CASE_DOCX", r"<path>\作品集.docx")
+# ===========================================================
 
 
 def write(name, title, source, body):
