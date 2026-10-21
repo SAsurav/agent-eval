@@ -1,0 +1,6 @@
+{"id": "h001", "level": "hard", "source": "handmade", "question": "赞助商推荐来的一个 Manager，按规则该不该收费？", "must_cite": true, "expect_doc": "03-付费判定规则.md"}
+{"id": "h002", "level": "hard", "source": "handmade", "question": "转发标签和数据中心群发用这两组加起来的送达率是多少？", "must_cite": true, "expect_doc": "07-案例-真实数据.md"}
+{"id": "h003", "level": "hard", "source": "handmade", "question": "微信系统那四个关键决策，各自放弃了哪个更省事的替代方案？", "must_cite": true, "expect_doc": "06-案例-四个关键决策.md"}
+{"id": "h004", "level": "hard", "source": "handmade", "question": "weak 层的联系人到底应该保留还是删掉？", "must_cite": true, "expect_doc": "01-领英抓取工作流.md"}
+{"id": "h005", "level": "hard", "source": "handmade", "question": "抓取脚本运行时，每家公司的实际平均耗时是多少秒？", "must_cite": false, "negative": true}
+{"id": "h006", "level": "hard", "source": "handmade", "question": "这套抓取流程从开始到现在一共完整运行过多少次？", "must_cite": false, "negative": true}

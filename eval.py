@@ -91,25 +91,37 @@ def judge(case, res):
 
 
 def summarize(rows):
-    total = len(rows)
-    passed = sum(1 for r in rows if r["passed"])
+    """分开算「真正跑完的」和「没跑成的」。
+
+    runtime_error（余额不足 / 网络断）不算模型失败——把它算进通过率会虚低，
+    但也不能当成功。所以单独记 not_run，通过率只在 completed 上算。
+    """
+    completed = [r for r in rows if r["fail_type"] != "runtime_error"]
+    not_run = [r for r in rows if r["fail_type"] == "runtime_error"]
+    total = len(completed)
+    passed = sum(1 for r in completed if r["passed"])
+
     by_level = {}
-    for r in rows:
+    for r in completed:
         k = r["level"]
         d = by_level.setdefault(k, {"n": 0, "pass": 0})
         d["n"] += 1
         d["pass"] += 1 if r["passed"] else 0
+
     fails = {}
-    for r in rows:
+    for r in completed:
         if not r["passed"]:
             fails[r["fail_type"]] = fails.get(r["fail_type"], 0) + 1
 
     def avg(key):
-        vals = [r[key] for r in rows if r.get(key) is not None]
+        vals = [r[key] for r in completed if r.get(key) is not None]
         return round(st.mean(vals), 1) if vals else 0
 
     return {
-        "total": total,
+        "total": len(rows),
+        "completed": total,
+        "not_run": len(not_run),
+        "not_run_ids": [r["id"] for r in not_run],
         "passed": passed,
         "pass_rate": round(passed / total * 100, 1) if total else 0.0,
         "by_level": {k: {**v, "rate": round(v["pass"] / v["n"] * 100, 1) if v["n"] else 0}
@@ -123,7 +135,8 @@ def summarize(rows):
 
 def print_report(s, baseline=None):
     print("\n" + "=" * 58)
-    print(f"通过 {s['passed']}/{s['total']}  总通过率 {s['pass_rate']}%")
+    print(f"通过 {s['passed']}/{s['completed']}  通过率 {s['pass_rate']}%"
+          + (f"   （另有 {s['not_run']} 条未跑成，未计入）" if s["not_run"] else ""))
     print("-" * 58)
     for lvl, v in sorted(s["by_level"].items()):
         print(f"  {lvl:9s} {v['pass']:>3}/{v['n']:<3}  {v['rate']:>5.1f}%")
@@ -132,6 +145,9 @@ def print_report(s, baseline=None):
         print("  失败分类：")
         for k, v in sorted(s["fail_types"].items(), key=lambda x: -x[1]):
             print(f"    {k:16s} {v}")
+    if s["not_run"]:
+        print("-" * 58)
+        print(f"  未跑成（余额/网络）：{' '.join(s['not_run_ids'])}")
     print("-" * 58)
     print(f"  平均步数 {s['avg_steps']}  平均 token {s['avg_tokens']}  平均耗时 {s['avg_elapsed_ms']}ms")
     if baseline:
@@ -155,12 +171,30 @@ def main():
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--mock", action="store_true", help="不需要 API key，验证判定逻辑")
     ap.add_argument("--sleep", type=float, default=0.3, help="每条之间的间隔，防止触发限流")
+    ap.add_argument("--only-failed", default=None,
+                    help="读上一份报告，只重跑其中 runtime_error 的用例（省额度）")
     args = ap.parse_args()
 
     cases = load_cases(args.cases, args.limit)
     if not cases:
         print(f"[!] 没有用例：{args.cases}，先跑 make_cases.py")
         return 1
+
+    if args.only_failed and os.path.exists(args.only_failed):
+        prev = json.load(open(args.only_failed, encoding="utf-8"))
+        want = {r["id"] for r in prev["rows"] if r["fail_type"] == "runtime_error"}
+        if not want:
+            print("[i] 上一份报告里没有未跑成的用例，退出")
+            return 0
+        merged = [c for c in cases if c["id"] in want]
+        print(f"[i] 只重跑 {len(merged)} 条未完成的用例：{' '.join(sorted(want))}")
+        cases = merged
+        prev_rows = prev["rows"]
+    elif args.only_failed:
+        print(f"[!] 找不到上一份报告：{args.only_failed}")
+        return 1
+    else:
+        prev_rows = None
 
     if not args.out:
         args.out = os.path.join("evals", "mock_baseline.json" if args.mock else "baseline.json")
@@ -198,14 +232,22 @@ def main():
         print(f"  [{i:02d}/{len(cases)}] {mark} {case['id']} {case['level']:8s} "
               f"{res.get('steps')}步 {res.get('tokens')}tok {ftype or ''}")
 
-    s = summarize(rows)
+    s_rows = rows
+    if prev_rows:
+        # 未重跑的用例沿用上一份结果，保证汇总覆盖全量
+        new_map = {r["id"]: r for r in rows}
+        s_rows = [new_map.get(r["id"], r) for r in prev_rows]
+        done_ids = {r["id"] for r in rows}
+        print(f"[i] 合并：本次 {len(rows)} 条 + 沿用 {len(s_rows) - len(rows)} 条 = {len(s_rows)} 条")
+
+    s = summarize(s_rows)
     baseline = None
     if args.baseline and os.path.exists(args.baseline):
         baseline = json.load(open(args.baseline, encoding="utf-8")).get("summary")
     print_report(s, baseline)
 
     report = {"when": time.strftime("%Y-%m-%d %H:%M:%S"), "mock": args.mock,
-              "corpus": args.corpus, "summary": s, "rows": rows}
+              "corpus": args.corpus, "summary": s, "rows": s_rows}
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
