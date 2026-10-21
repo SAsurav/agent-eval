@@ -1,0 +1,32 @@
+{"id": "c001", "level": "boundary", "source": "from_corpus", "question": "关于「跟进台账使用说明」，文档里对 跟进台账使用、说明、来源 是怎么规定的？", "expect_doc": "02-跟进台账使用说明.md", "must_cite": true, "sanity": true}
+{"id": "c002", "level": "simple", "source": "from_corpus", "question": "「跟进台账使用说明」这份文档主要讲什么？", "expect_doc": "02-跟进台账使用说明.md", "must_cite": true, "sanity": true}
+{"id": "c003", "level": "boundary", "source": "from_corpus", "question": "关于「在不可控平台上建立可靠性 · 边界与合规」，文档里对 在不可控平台、上建立可靠性、边界与合规 是怎么规定的？", "expect_doc": "11-案例-边界与合规.md", "must_cite": true, "sanity": true}
+{"id": "c004", "level": "simple", "source": "from_corpus", "question": "「在不可控平台上建立可靠性 · 边界与合规」这份文档主要讲什么？", "expect_doc": "11-案例-边界与合规.md", "must_cite": true, "sanity": true}
+{"id": "c005", "level": "boundary", "source": "from_corpus", "question": "关于「在不可控平台上建立可靠性 · 问题」，文档里对 在不可控平台、上建立可靠性、问题 是怎么规定的？", "expect_doc": "04-案例-问题.md", "must_cite": true, "sanity": true}
+{"id": "c006", "level": "simple", "source": "from_corpus", "question": "「在不可控平台上建立可靠性 · 问题」这份文档主要讲什么？", "expect_doc": "04-案例-问题.md", "must_cite": true, "sanity": true}
+{"id": "c007", "level": "boundary", "source": "from_corpus", "question": "关于「在不可控平台上建立可靠性 · 这套经验怎么迁移到 Agent」，文档里对 在不可控平台、上建立可靠性、这套经验怎么 是怎么规定的？", "expect_doc": "10-案例-这套经验怎么迁移到 Ag.md", "must_cite": true, "sanity": true}
+{"id": "c008", "level": "simple", "source": "from_corpus", "question": "「在不可控平台上建立可靠性 · 这套经验怎么迁移到 Agent」这份文档主要讲什么？", "expect_doc": "10-案例-这套经验怎么迁移到 Ag.md", "must_cite": true, "sanity": true}
+{"id": "c009", "level": "boundary", "source": "from_corpus", "question": "关于「在不可控平台上建立可靠性 · 系统是怎么长出来的」，文档里对 在不可控平台、上建立可靠性、系统是怎么长 是怎么规定的？", "expect_doc": "09-案例-系统是怎么长出来的.md", "must_cite": true, "sanity": true}
+{"id": "c010", "level": "simple", "source": "from_corpus", "question": "「在不可控平台上建立可靠性 · 系统是怎么长出来的」这份文档主要讲什么？", "expect_doc": "09-案例-系统是怎么长出来的.md", "must_cite": true, "sanity": true}
+{"id": "c011", "level": "boundary", "source": "from_corpus", "question": "关于「在不可控平台上建立可靠性 · 三个前提都不成立」，文档里对 在不可控平台、上建立可靠性、三个前提都不 是怎么规定的？", "expect_doc": "05-案例-三个前提都不成立.md", "must_cite": true, "sanity": true}
+{"id": "c012", "level": "simple", "source": "from_corpus", "question": "「在不可控平台上建立可靠性 · 三个前提都不成立」这份文档主要讲什么？", "expect_doc": "05-案例-三个前提都不成立.md", "must_cite": true, "sanity": true}
+{"id": "c013", "level": "boundary", "source": "from_corpus", "question": "关于「在不可控平台上建立可靠性 · 失败分类」，文档里对 在不可控平台、上建立可靠性、失败分类 是怎么规定的？", "expect_doc": "08-案例-失败分类.md", "must_cite": true, "sanity": true}
+{"id": "c014", "level": "simple", "source": "from_corpus", "question": "「在不可控平台上建立可靠性 · 失败分类」这份文档主要讲什么？", "expect_doc": "08-案例-失败分类.md", "must_cite": true, "sanity": true}
+{"id": "c015", "level": "boundary", "source": "from_corpus", "question": "关于「领英目标职位抓取工作流」，文档里对 领英目标职位、抓取工作流、来源 是怎么规定的？", "expect_doc": "01-领英抓取工作流.md", "must_cite": true, "sanity": true}
+{"id": "c016", "level": "simple", "source": "from_corpus", "question": "「领英目标职位抓取工作流」这份文档主要讲什么？", "expect_doc": "01-领英抓取工作流.md", "must_cite": true, "sanity": true}
+{"id": "c017", "level": "boundary", "source": "from_corpus", "question": "关于「在不可控平台上建立可靠性 · 真实数据」，文档里对 在不可控平台、上建立可靠性、真实数据 是怎么规定的？", "expect_doc": "07-案例-真实数据.md", "must_cite": true, "sanity": true}
+{"id": "c018", "level": "simple", "source": "from_corpus", "question": "「在不可控平台上建立可靠性 · 真实数据」这份文档主要讲什么？", "expect_doc": "07-案例-真实数据.md", "must_cite": true, "sanity": true}
+{"id": "c019", "level": "boundary", "source": "from_corpus", "question": "关于「客户付费判定规则」，文档里对 客户付费判定、规则、来源 是怎么规定的？", "expect_doc": "03-付费判定规则.md", "must_cite": true, "sanity": true}
+{"id": "c020", "level": "boundary", "source": "handmade", "question": "赞助商推荐来的客户要不要收费？", "must_cite": true, "negative": false, "expect_doc": "03-付费判定规则.md", "sanity": true}
+{"id": "c021", "level": "boundary", "source": "handmade", "question": "拿不准某个客户该不该免费的时候应该怎么处理？", "must_cite": true, "negative": false, "expect_doc": "03-付费判定规则.md", "sanity": true}
+{"id": "c022", "level": "boundary", "source": "handmade", "question": "哪些事情是明确不允许自己决定的？", "must_cite": true, "negative": false, "expect_doc": "03-付费判定规则.md", "sanity": true}
+{"id": "c023", "level": "boundary", "source": "handmade", "question": "为什么中国 IP 会导致抓取结果全部为 0？", "must_cite": true, "negative": false, "expect_doc": "01-领英抓取工作流.md", "sanity": true}
+{"id": "c024", "level": "boundary", "source": "handmade", "question": "weak 层的联系人应该怎么处理，为什么？", "must_cite": true, "negative": false, "expect_doc": "01-领英抓取工作流.md", "sanity": true}
+{"id": "c025", "level": "boundary", "source": "handmade", "question": "为什么不能相信界面回读来判断消息是否真的发出去了？", "must_cite": true, "negative": false, "expect_doc": "06-案例-四个关键决策.md", "sanity": true}
+{"id": "c026", "level": "boundary", "source": "handmade", "question": "幂等重算和保存进度这两种恢复方式有什么区别？", "must_cite": true, "negative": false, "expect_doc": "06-案例-四个关键决策.md", "sanity": true}
+{"id": "c027", "level": "boundary", "source": "handmade", "question": "跟进台账里的状态可以填哪些值？", "must_cite": true, "negative": false, "expect_doc": "02-跟进台账使用说明.md", "sanity": true}
+{"id": "c028", "level": "hard", "source": "handmade", "question": "2025 年这套流程带来的营收是多少？", "must_cite": false, "negative": true, "sanity": null}
+{"id": "c029", "level": "hard", "source": "handmade", "question": "赞助商名单里一共有几家公司？", "must_cite": false, "negative": true, "sanity": null}
+{"id": "c030", "level": "hard", "source": "handmade", "question": "抓取程序部署在哪家云厂商、什么区域？", "must_cite": false, "negative": true, "sanity": null}
+{"id": "c031", "level": "hard", "source": "handmade", "question": "作者每周在这套流程上投入多少小时？", "must_cite": false, "negative": true, "sanity": null}
+{"id": "c032", "level": "hard", "source": "handmade", "question": "这些线索的平均成交周期是多久？", "must_cite": false, "negative": true, "sanity": null}
