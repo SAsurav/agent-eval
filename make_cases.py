@@ -13,7 +13,8 @@
 （judge 自己也要被 eval，这条同样适用于用例集。）
 
 用法：
-  python make_cases.py --corpus E:\\CCode\\asu-skills --out evals/cases_v1.jsonl
+  python make_cases.py --corpus corpus --out evals/cases_v1.jsonl
+  python make_cases.py            # 默认读 ./corpus，输出 evals/cases_v1.jsonl
 """
 import argparse
 import json

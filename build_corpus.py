@@ -16,9 +16,12 @@ from docx import Document
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "corpus")
 
+# ===== 按你的环境改这三行（本脚本只用于「从原始文件重新生成语料」，
+#       仓库里已经有生成好的 corpus/，平时不需要跑）=====
 WORKFLOW = r"<path>\WORKFLOW.md"
 XLSX = r"<path>\跟进表.xlsx"
 DOCX = r"<path>\作品集.docx"
+# =====================================================
 
 
 def write(name, title, source, body):

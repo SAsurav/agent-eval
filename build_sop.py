@@ -13,7 +13,10 @@ from docx import Document
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "corpus")
+
+# ===== 按你的环境改这一行（仓库里已有生成好的 corpus/，平时不需要跑）=====
 SOP = r"<path>\SOP.docx"
+# ===================================================================
 
 # 脱敏映射：顺序重要，长的先替换
 REDACT = [
