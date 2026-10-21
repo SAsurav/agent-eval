@@ -1,16 +1,15 @@
-# 密钥与凭证 —— 绝对不要提交
-key.txt
+﻿key.txt
 .env
 *.key
 *_key.txt
-
-# 运行产物
 traces/*.jsonl
 evals/*.json
 notes/*.md
 !evals/cases_v1.jsonl
-
-# Python
+!evals/cases_hard.jsonl
+!evals/cases_conflict.jsonl
 __pycache__/
 *.pyc
 .venv/
+linkedin-eval/*.xlsx
+linkedin-eval/eval_result.json

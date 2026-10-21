@@ -1,0 +1,108 @@
+{
+  "CompanyA": [
+    {
+      "name": "Person A1",
+      "headline": "Regional Procurement Director at Company A",
+      "location": "新加坡",
+      "url": "https://example.com/in/person-a1",
+      "current": "目前就职: Company A - Regional Procurement Director",
+      "former": "",
+      "tier": "strong",
+      "matched_titles": ["Critical Facility / Data Center Procurement Manager"]
+    },
+    {
+      "name": "Person A2",
+      "headline": "Energy & Sustainability | MBA",
+      "location": "新加坡",
+      "url": "https://example.com/in/person-a2",
+      "current": "目前就职: Company A - Energy and Sustainability Manager, APAC",
+      "former": "",
+      "tier": "strong",
+      "matched_titles": ["Sustainability & Energy Manager (Data Center)"]
+    },
+    {
+      "name": "Person A3",
+      "headline": "Business Development Consultant, Company A Technology",
+      "location": "泰国",
+      "url": "https://example.com/in/person-a3",
+      "current": "",
+      "former": "",
+      "tier": "weak",
+      "matched_titles": ["Business Development Director / Manager - Data Center"]
+    }
+  ],
+  "CompanyB": [
+    {
+      "name": "Person B1",
+      "headline": "VP Procurement, East Asia Pacific",
+      "location": "新加坡",
+      "url": "https://example.com/in/person-b1",
+      "current": "目前就职: Company B - Vice President Procurement - East Asia",
+      "former": "",
+      "tier": "strong",
+      "matched_titles": ["Critical Facility / Data Center Procurement Manager"]
+    },
+    {
+      "name": "Person B2",
+      "headline": "Batam Cluster Supply Chain Senior Manager at Company B",
+      "location": "新加坡",
+      "url": "https://example.com/in/person-b2",
+      "current": "目前就职: Company B - Supply Chain Senior Manager - Batam",
+      "former": "",
+      "tier": "strong",
+      "matched_titles": ["Data Center Operations Manager"]
+    },
+    {
+      "name": "Person B3",
+      "headline": "Senior Site IT Technician",
+      "location": "越南",
+      "url": "https://example.com/in/person-b3",
+      "current": "目前就职: Company B - Senior Site IT Technician",
+      "former": "",
+      "tier": "strong",
+      "matched_titles": ["Data Center Operations Manager"]
+    }
+  ],
+  "CompanyC": [
+    {
+      "name": "Person C1",
+      "headline": "Product Manager @ Company D | Cybersecurity",
+      "location": "新加坡",
+      "url": "https://example.com/in/person-c1",
+      "current": "",
+      "former": "",
+      "tier": "weak",
+      "matched_titles": ["Business Development Director / Manager - Data Center"]
+    },
+    {
+      "name": "Person C2",
+      "headline": "Marketing | Business Development",
+      "location": "新加坡",
+      "url": "https://example.com/in/person-c2",
+      "current": "",
+      "former": "",
+      "tier": "weak",
+      "matched_titles": ["Business Development Director / Manager - Data Center"]
+    },
+    {
+      "name": "Person C3",
+      "headline": "Senior Presales / Solutions Consultant",
+      "location": "马来西亚",
+      "url": "https://example.com/in/person-c3",
+      "current": "目前就职: Company C - Senior Presales Consultant",
+      "former": "",
+      "tier": "strong",
+      "matched_titles": ["Pre-Sales Solution Engineer"]
+    },
+    {
+      "name": "Person C4",
+      "headline": "Delivering stable, secure, and high-performance network infrastructure",
+      "location": "",
+      "url": "https://example.com/in/person-c4",
+      "current": "",
+      "former": "",
+      "tier": "strong",
+      "matched_titles": ["Data Center Operations Manager"]
+    }
+  ]
+}
