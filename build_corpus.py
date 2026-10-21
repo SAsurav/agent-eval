@@ -1,9 +1,9 @@
-"""把真实业务文档整理成知识库语料（markdown）。
+"""把内部业务文档整理成知识库语料（markdown）。
 
-来源三处，全部是真实业务文档，不含客户名单：
-  1. 内部项目/WORKFLOW.md        —— 领英抓取工作流（含踩坑表）
-  2. 领英海外拓客跟进表.xlsx           —— 「使用说明」「付费判定规则」两个 sheet
-  3. 作品集-在不可控平台上建立可靠性.docx —— 按小节拆开
+来源三处，全部是真实业务文档，已脱敏、不含客户名单：
+  1. 抓取工作流文档（含踩坑表）
+  2. 台账说明与付费判定规则（xlsx 的两个 sheet）
+  3. 本人工程复盘（按小节拆开）
 
 输出到 agent-eval/corpus/，文件名带序号，便于检索命中时定位。
 """
@@ -42,7 +42,7 @@ def from_workflow():
         return
     body = open(WORKFLOW, encoding="utf-8").read()
     body = re.sub(r"^# .*\n", "", body, count=1)
-    write("01-领英抓取工作流.md", "领英目标职位抓取工作流", "内部项目/WORKFLOW.md", body)
+    write("01-领英抓取工作流.md", "领英目标职位抓取工作流", "内部抓取工作流文档（已脱敏）", body)
 
 
 def from_xlsx():
@@ -62,7 +62,7 @@ def from_xlsx():
             cells = [str(c).strip() for c in row if c not in (None, "")]
             if cells:
                 lines.append("| " + " | ".join(cells) + " |" if len(cells) > 1 else cells[0])
-        write(name, title, f"领英海外拓客跟进表.xlsx / {sheet}", "\n".join(lines))
+        write(name, title, f"内部台账文档 / {sheet}（已脱敏）", "\n".join(lines))
 
 
 SECTION_RE = re.compile(r"^[一二三四五六七八九十]+、")

@@ -1,10 +1,14 @@
-"""把《领英海外拓客 SOP（精简版）》拆成知识库语料。
+"""把内部作业 SOP（docx）拆成知识库语料。
 
 拆成 6 篇而不是 1 篇：SOP 太长，整篇塞进去会变成一个巨大的 chunk，
 检索命中后返回一大堆无关内容，反而降低回答质量。
 
-脱敏：去掉真实人名、公司名、活动名、酒店名，保留规则与话术结构。
-（这些是业务信息，不是公开信息；语料会推到 GitHub。）
+脱敏：真实人名 / 公司名 / 活动名 / 酒店名**不写进代码**，由环境变量提供：
+  set SOP_SENDER=<发送人姓名>
+  set SOP_COMPANY=<公司英文名>
+  set SOP_EVENT=<活动全名>
+  set SOP_VENUE=<活动酒店>
+未设置时不做替换——重新生成语料前务必先设好，否则敏感信息会进语料。
 """
 import os
 import re
@@ -20,22 +24,24 @@ OUT = os.path.join(HERE, "corpus")
 SOP = os.environ.get("SOP_DOCX", r"<path>\SOP.docx")
 # ===========================================================
 
-# 脱敏映射：顺序重要，长的先替换
-REDACT = [
-    ("Daisy Li", "[发送人]"),
-    ("Daisy", "[发送人]"),
-    ("EnmoreTech", "[公司]"),
-    ("Southeast Asia Data Center Liquid Cooling & AI Chip Thermal Summit in Bangkok",
-     "[活动全名]"),
-    ("Data Center Liquid Cooling & AI Chip Thermal Summit in Bangkok", "[活动全名]"),
-    ("Radisson Blu plaze Bangkok", "[活动酒店]"),
-    ("this 19-20 Nov", "[活动日期]"),
-    ("AWS, Google Cloud, DAMAC Digital, Vertiv, Delta, Schneider Electric and Aurecon",
-     "[演讲嘉宾公司列表]"),
-]
+# 脱敏映射：真实人名/公司/活动/酒店**不写进代码**，由环境变量提供。
+# 重新生成语料前必须先设好，否则敏感信息会进 corpus/。
+#   set SOP_SENDER=<发送人姓名>
+#   set SOP_COMPANY=<公司英文名>
+#   set SOP_EVENT=<活动全名>
+#   set SOP_VENUE=<活动酒店>
+REDACT = [x for x in [
+    (os.environ.get("SOP_SENDER", ""), "[发送人]"),
+    (os.environ.get("SOP_COMPANY", ""), "[公司]"),
+    (os.environ.get("SOP_EVENT", ""), "[活动全名]"),
+    (os.environ.get("SOP_VENUE", ""), "[活动酒店]"),
+] if x[0]]
 
 
 def clean(text):
+    if not REDACT:
+        print("  ⚠ 未设置脱敏环境变量，本次生成不会做替换（SOP_SENDER / SOP_COMPANY / "
+              "SOP_EVENT / SOP_VENUE）")
     for a, b in REDACT:
         text = text.replace(a, b)
     return text
@@ -43,7 +49,7 @@ def clean(text):
 
 def write(name, title, body):
     os.makedirs(OUT, exist_ok=True)
-    text = f"# {title}\n\n> 来源：领英海外拓客 SOP（精简版）· 已脱敏\n\n{clean(body).strip()}\n"
+    text = f"# {title}\n\n> 来源：内部作业 SOP（已脱敏）\n\n{clean(body).strip()}\n"
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
         f.write(text)
     print(f"  {name:38s} {len(text.encode('utf-8')) // 1024:>3} KB")
